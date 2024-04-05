@@ -15,10 +15,14 @@ module.exports = function smtpServiceHook(sails) {
           host: sails.config.custom.smtpHost,
           port: sails.config.custom.smtpPort,
           secure: sails.config.custom.smtpSecure,
-          auth: sails.config.custom.smtpUser && {
-            user: sails.config.custom.smtpUser,
-            pass: sails.config.custom.smtpPassword,
-          },
+          // auth: sails.config.custom.smtpUser && {
+          //   user: sails.config.custom.smtpUser,
+          //   pass: sails.config.custom.smtpPassword,
+          // },
+          tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false
+        },
         });
         sails.log.info('SMTP hook has been loaded successfully');
       }

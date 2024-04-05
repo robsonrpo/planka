@@ -28,10 +28,12 @@ COPY client .
 RUN DISABLE_ESLINT_PLUGIN=true npm run build
 
 FROM node:18-alpine
+ENV TZ=America/Sao_Paulo
 
 RUN apk -U upgrade \
-  && apk add bash \
-  --no-cache
+  && apk add bash telnet tzdata\
+  --no-cache \
+  && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 USER node
 WORKDIR /app
