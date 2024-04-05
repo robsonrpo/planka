@@ -31,7 +31,7 @@ FROM node:18-alpine
 ENV TZ=America/Sao_Paulo
 
 RUN apk -U upgrade \
-  && apk add bash telnet tzdata\
+  && apk add bash tzdata\
   --no-cache \
   && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
